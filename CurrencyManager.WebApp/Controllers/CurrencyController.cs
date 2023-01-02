@@ -2,6 +2,7 @@
 using CurrencyManager.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CurrencyManager.WebApp.Controllers
 {
@@ -16,9 +17,10 @@ namespace CurrencyManager.WebApp.Controllers
 
         // Metoda return View zwraca plik cshtml
         // Wybiera go na podstawie konwencji nazewnictwa, więcej info w komentarzu w klasie Program przy metodzie AddControllersWithViews
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
             var currencies = await _currencyProviderService.GetCurrenciesAsync(); 
+
             return View(currencies);
         }
 

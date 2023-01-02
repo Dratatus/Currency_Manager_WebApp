@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+<!--Zapis wiążący klasę modelu z widokiem cshtml, to umożliwia przesyłania danych między widokiem a kontrolerem-->
+@model Passes
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CurrencyManager.WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CurrencyManager.WebApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <form method="post" class="form-check">
+
+              <div class="form-outline mb-4">
+                <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.EmailAddress" />
+                <label class="form-label" for="form2Example1">Adres email</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.Password"/>
+                <label class="form-label" for="form2Example2">Hasło</label>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">            
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mb-4">Zaloguj</button>
+
+              @if (ViewBag.ErrorMessage != null)
+              {
+                <label class="form-check-label" for="password">
+                    Błędne dane logowania
+                </label>
+              }
+
+            </form>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

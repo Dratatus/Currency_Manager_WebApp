@@ -1,4 +1,12 @@
+using CurrencyManager.Data.Configutation;
+using CurrencyManager.Data.Entities;
+using CurrencyManager.Data.Repositories;
 using CurrencyManager.Logic.Services.CurrencyProvider;
+using CurrencyManager.Logic.Services.ExchangeRates;
+using CurrencyManager.WebApp.Services.Users;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace CurrencyManager.WebApp
 {
@@ -19,9 +27,18 @@ namespace CurrencyManager.WebApp
             // Np. Dla HomeController i akcji Index, bêdzie szukaæ widoku Views/Home/Index.cshtml
             // Np. Dla CurrencyController i akcji ShowCurrencies, bêdzie szukaæ widoku Views/Currency/ShowCurrencies.cshtml
             builder.Services.AddControllersWithViews();
-            builder.Services.AddTransient<ICurrencyProviderService, ApiCurrencyProviderService>();
+            builder.Services.AddTransient<ICurrencyProviderService, HardcodedCurrencyProviderService>();
+            //builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
+
+            builder.Services.AddTransient<IUserService, UserService>();
+
+            builder.Services.AddTransient<IRepositoryBase<User>, RepositoryBase<User>>();
+            builder.Services.AddSingleton<CurrencyManagerDbContext>();
 
             var app = builder.Build();
+
+            var currencyManagerDbContext = app.Services.GetService<CurrencyManagerDbContext>();
+            currencyManagerDbContext.Database.EnsureCreated();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -38,10 +55,10 @@ namespace CurrencyManager.WebApp
 
             app.UseAuthorization();
 
-            // Ustalanie paternu mapowania adresu url na kontrolery, akcje i argumenty 
+            // Ustawianie domyœlnej strony (po uruchomieniu apki)
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Currency}/{action=Index}/{id?}");
+                pattern: "{controller=Login}/{action=Login}");
 
             app.Run();
         }
