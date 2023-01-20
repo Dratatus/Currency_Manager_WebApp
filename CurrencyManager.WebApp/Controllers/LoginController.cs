@@ -36,5 +36,28 @@ namespace CurrencyManager.WebApp.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(Passes passes)
+        {
+            bool loginSuccess = await _userService.RegisterAsync(passes.EmailAddress, passes.Password);
+
+            if (loginSuccess)
+            {
+                return Redirect("Currency/Index");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Błędne dane logowania";
+
+                return View();
+            }
+        }
     }
 }

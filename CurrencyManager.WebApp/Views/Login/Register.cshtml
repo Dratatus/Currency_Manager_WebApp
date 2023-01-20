@@ -22,38 +22,34 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Zaloguj się</h2>
+              <h2 class="text-uppercase text-center mb-5">Zarejestuj się</h2>
 
               <form method="post" class="form-check">
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.EmailAddress" />
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                   <label class="form-label">Email</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.Password"/>
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
                   <label class="form-label">Hasło</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <label class="form-label">Powtórz hasło</label>
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
 
-                @if (ViewBag.ErrorMessage != null)
-              {
-                <label class="form-check-label" for="password">
-                    Błędne dane logowania 
-                </label>
-              }
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a asp-action="Login"class="fw-bold text-body"><u>Login here</u></a></p>
+
               </form>
 
-              <p class="text-center text-muted mt-5 mb-0">Don'thave an account? <a asp-action="Register" class="fw-bold text-body"><u>Register here</u></a></p>
-
-                  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
             </div>
           </div>
         </div>
@@ -61,8 +57,5 @@
     </div>
   </div>
 </section>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>

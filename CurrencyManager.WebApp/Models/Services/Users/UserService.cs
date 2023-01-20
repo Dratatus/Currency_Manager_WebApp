@@ -1,5 +1,6 @@
 ﻿using CurrencyManager.Data.Entities;
 using CurrencyManager.Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,19 +25,38 @@ namespace CurrencyManager.WebApp.Services.Users
             return userExists;
         }
 
-        public async Task<User> RegisterAsync(User newUser)
+        public async Task<bool> RegisterAsync(string emailAddress, string password)
         {
             // todo: walidacja danych
 
-            var userToRegister = await _repositoryBase.AddAsync(newUser);
+            bool userAlreadyExist = await IsUserExist(emailAddress);
 
-            return userToRegister;
+            if (userAlreadyExist)
+            {
+                throw new Exception("Podany Email już istnieje w bazie danych!");
+            }
+            else
+            {
+                User newUser = new User { EmailAddress = emailAddress, Password = password };
+                var userToRegister = await _repositoryBase.AddAsync(newUser);
+
+                return true;
+            }
         }
 
-        public async Task<IEnumerable<User>> GetAllUser()
+        public async Task<IEnumerable<User>> GetAllUsers()
         {
             var users = await _repositoryBase.GetAllAsync();
             return users;
+        }
+
+        public async Task<bool> IsUserExist(string emailAddress)
+        {
+            var userFound = await _repositoryBase.FindAsync(u => u.EmailAddress == emailAddress);
+
+            bool userAlreadyExist = userFound.Any();
+
+            return  userAlreadyExist;
         }
     }
 }

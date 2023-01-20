@@ -6,10 +6,10 @@ namespace CurrencyManager.WebApp.Services.Users
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetAllUser();
+        Task<IEnumerable<User>> GetAllUsers();
 
         Task<bool> LoginAsync(string emailAddress, string password);
 
-        Task<User> RegisterAsync(User newUser);
+        Task<bool> RegisterAsync(string emailAddress, string password);
     }
 }
