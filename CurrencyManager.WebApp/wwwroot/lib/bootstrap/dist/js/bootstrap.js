@@ -28,7 +28,7 @@
     n['default'] = e;
     return Object.freeze(n);
   }
-
+    $('#myModal').modal(options)
   var Popper__namespace = /*#__PURE__*/_interopNamespace(Popper);
 
   /**

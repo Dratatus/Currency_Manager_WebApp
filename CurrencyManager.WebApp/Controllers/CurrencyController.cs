@@ -1,7 +1,5 @@
 ﻿using CurrencyManager.Logic.Services.CurrencyProvider;
-using CurrencyManager.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace CurrencyManager.WebApp.Controllers
@@ -22,16 +20,6 @@ namespace CurrencyManager.WebApp.Controllers
             var currencies = await _currencyProviderService.GetCurrenciesAsync(); 
 
             return View(currencies);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

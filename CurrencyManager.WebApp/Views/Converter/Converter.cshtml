@@ -1,0 +1,108 @@
+﻿@using CurrencyManager.WebApp.Models.ViewModels
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<!--Zapis wiążący klasę modelu z widokiem cshtml, to umożliwia przesyłania danych między widokiem a kontrolerem-->
+@model CurrencyViewModel
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CurrencyManager.WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Register.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="~/lib/bootstrap/dist/css/bootstrap.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+
+
+   <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Converter Walut</h2>
+
+              <form asp-controller="Converter" asp-action="Converter" method="post" class="form-check">
+
+                <div class="form-outline mb-4">
+                  <label class="form-label">Waluta sprzedawana</label>
+                  <select class = "form-select" asp-items="Model.CurrencySelectedList" asp-for="CurrencyToSell.Code"> </select>
+                  
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label">Waluta nabywana</label>
+                  <select class = "form-select" asp-items="Model.CurrencySelectedList" asp-for="CurrencyToPurchase.Code"> </select>
+                </div>
+               
+                <div class="form-outline mb-4">
+                  <label class="form-label">Ilość pieniędzy do konwersji</label>
+                  <input type="number" id="Amount" class="form-control"asp-for="Amount"/>
+                </div>
+                    @{
+                        string rateMessage = $"Kurs waluty {ViewBag.Message2}/{ViewBag.Message}: {Model.Rate}";
+                        string amounMessage = $"Liczbba przekonwertowanych pieniędzy: {Model.Amount} {ViewBag.Message2}";
+                        string totalMoneyMessage = $"Liczbba pieniędzy po konwersji: {Model.TotalAmount} {ViewBag.Message}";
+                   };
+
+             <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Wyświetl
+                </button>
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Konwertuj
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pomyślnie Przekonwertowano!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p>@rateMessage</p>
+                          <p>@amounMessage</p>
+                          <p>@totalMoneyMessage</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

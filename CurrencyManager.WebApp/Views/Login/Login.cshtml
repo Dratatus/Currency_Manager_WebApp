@@ -41,12 +41,14 @@
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
                 </div>
 
-                @if (ViewBag.ErrorMessage != null)
-              {
-                <label class="form-check-label" for="password">
-                    Błędne dane logowania 
-                </label>
-              }
+                 <p>
+                     @if (TempData["errorMessage"] != null)
+                    {
+                            <div class="alert alert-danger">
+                               <p style= "text-align: center;"> @TempData["errorMessage"]</p>
+                            </div>
+                    }
+                </p>
               </form>
 
               <p class="text-center text-muted mt-5 mb-0">Don'thave an account? <a asp-action="Register" class="fw-bold text-body"><u>Register here</u></a></p>

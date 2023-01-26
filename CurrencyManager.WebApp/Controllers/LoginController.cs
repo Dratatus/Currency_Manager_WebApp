@@ -1,6 +1,7 @@
-﻿using CurrencyManager.WebApp.Models;
+﻿using CurrencyManager.Data.Entities;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace CurrencyManager.WebApp.Controllers
@@ -23,16 +24,26 @@ namespace CurrencyManager.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Passes passes)
         {
-            bool loginSuccess = await _userService.LoginAsync(passes.EmailAddress, passes.Password);
-
-            if (loginSuccess)
+            try
             {
-                return Redirect("Currency/Index");
+                bool loginSuccess = await _userService.LoginAsync(passes.EmailAddress, passes.Password);
+
+                if (loginSuccess)
+                {
+                    return Redirect("Currency/Index");
+
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Błędne dane logowania";
+
+                    return View();
+                }
             }
-            else
+            catch (Exception e)
             {
-                ViewBag.ErrorMessage = "Błędne dane logowania";
 
+                TempData["errorMessage"] = $"{e.Message}";
                 return View();
             }
         }
@@ -46,16 +57,21 @@ namespace CurrencyManager.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Passes passes)
         {
-            bool loginSuccess = await _userService.RegisterAsync(passes.EmailAddress, passes.Password);
-
-            if (loginSuccess)
+            if (ModelState.IsValid)
             {
-                return Redirect("Currency/Index");
+                try
+                {
+                    await _userService.RegisterAsync(passes.EmailAddress, passes.Password);
+                    return Redirect("../Currency/Index");
+                }
+                catch (Exception e)
+                {
+                    TempData["errorMessage"] = e.Message;
+                    return View();
+                }
             }
             else
             {
-                ViewBag.ErrorMessage = "Błędne dane logowania";
-
                 return View();
             }
         }

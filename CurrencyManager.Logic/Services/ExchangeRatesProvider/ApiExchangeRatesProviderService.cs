@@ -12,7 +12,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRatesProvider
         private readonly ICurrencyProviderService _currencyProviderService;
 
         private readonly string _apiUrl = "https://api.fastforex.io";
-        private readonly string _developmentKey = "98a34cff65-03813dd93e-rn99bj";
+        private readonly string _developmentKey = "598a873767-79203db811-rp1k16";
 
         public ApiExchangeRatesProviderService(ICurrencyProviderService currencyProviderService)
         {
@@ -53,6 +53,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRatesProvider
             var client = new RestClient(restClientOptions);
 
             var request = new RestRequest(apiEndpoint, Method.Get);
+            request.AddHeader("accept", "application/json");
 
             var restResponse = await client.GetAsync(request);
 

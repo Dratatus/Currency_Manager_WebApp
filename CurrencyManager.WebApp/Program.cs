@@ -3,6 +3,7 @@ using CurrencyManager.Data.Entities;
 using CurrencyManager.Data.Repositories;
 using CurrencyManager.Logic.Services.CurrencyProvider;
 using CurrencyManager.Logic.Services.ExchangeRates;
+using CurrencyManager.Logic.Services.ExchangeRatesProvider;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,8 @@ namespace CurrencyManager.WebApp
             // Np. Dla CurrencyController i akcji ShowCurrencies, bêdzie szukaæ widoku Views/Currency/ShowCurrencies.cshtml
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ICurrencyProviderService, HardcodedCurrencyProviderService>();
-            //builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
+            builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
+            builder.Services.AddTransient<IExchangeRateProviderService, ApiExchangeRatesProviderService>();
 
             builder.Services.AddTransient<IUserService, UserService>();
 
@@ -58,7 +60,7 @@ namespace CurrencyManager.WebApp
             // Ustawianie domyœlnej strony (po uruchomieniu apki)
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Login}/{action=Login}");
+                pattern: "{controller=Currency}/{action=Index}");
 
             app.Run();
         }

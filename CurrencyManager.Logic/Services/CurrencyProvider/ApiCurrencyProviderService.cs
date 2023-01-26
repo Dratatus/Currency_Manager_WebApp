@@ -66,13 +66,38 @@ namespace CurrencyManager.Logic.Services.CurrencyProvider
                 string name = responseDataRowValues[0].Replace("\"", string.Empty);
                 string value = responseDataRowValues[1].Replace("\"", string.Empty);
 
-                Currency currency = new Currency 
-                { 
-                    Code = name, 
+                Currency currency = new Currency
+                {
+                    Code = name,
                     Name = value
                 };
 
                 currencies.Add(currency);
+                currencies.RemoveAll(
+                    c => c.Code == "BTC" ||
+                     c.Code == "BYN" ||
+                     c.Code == "BYR" ||
+                     c.Code == "CRC" ||
+                     c.Code == "CUC" ||
+                     c.Code == "FJD" ||
+                     c.Code == "GGP" ||
+                     c.Code == "IMP" ||
+                     c.Code == "JEP" ||
+                     c.Code == "LTL" ||
+                     c.Code == "LVL" ||
+                     c.Code == "MRO" ||
+                     c.Code == "NIO" ||
+                     c.Code == "SBD" ||
+                     c.Code == "SLE" ||
+                     c.Code == "STD" ||
+                     c.Code == "SVC" ||
+                     c.Code == "VEF" ||
+                     c.Code == "VES" ||
+                     c.Code == "XAG" ||
+                     c.Code == "XAU" ||
+                     c.Code == "ZMK" ||
+                     c.Code == "ZWL"
+                    );
             }
 
             return currencies;

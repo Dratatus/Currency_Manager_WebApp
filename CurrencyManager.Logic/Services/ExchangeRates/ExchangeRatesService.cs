@@ -1,7 +1,5 @@
 ﻿using CurrencyManager.Logic.Models;
-using CurrencyManager.Logic.Services.CurrencyProvider;
 using CurrencyManager.Logic.Services.ExchangeRatesProvider;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,14 +8,12 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 {
     public class ExchangeRatesService : IExchangeRatesService
     {
-        private readonly ICurrencyProviderService _currencyProviderService;
         private readonly IExchangeRateProviderService _exchangeRateProviderService;
 
         private IEnumerable<ExchangeRate> _exchangeRates;
 
-        public ExchangeRatesService(ICurrencyProviderService currencyProviderService, IExchangeRateProviderService exchangeRateProviderService)
+        public ExchangeRatesService(IExchangeRateProviderService exchangeRateProviderService)
         {
-            _currencyProviderService = currencyProviderService;
             _exchangeRateProviderService = exchangeRateProviderService;
         }
 
@@ -38,7 +34,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public decimal GetAmonuntOfExchangingMoney(string currencyToPurchase, string currencyToSell, decimal amountOfmoney)
         {
-            decimal exchangeRate = GetExchangeRate(currencyToPurchase, currencyToSell);
+            decimal exchangeRate =  GetExchangeRate(currencyToPurchase, currencyToSell);
 
             decimal amonuntOfExchangingMoney = exchangeRate * amountOfmoney;
 

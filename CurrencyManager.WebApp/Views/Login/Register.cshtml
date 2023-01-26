@@ -12,6 +12,7 @@
     <title>@ViewData["Title"] - CurrencyManager.WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Register.css" />
+
 </head>
 <body>
    <section class="vh-100 bg-image"
@@ -27,25 +28,37 @@
               <form method="post" class="form-check">
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.EmailAddress" />
+                  <span asp-validation-for="EmailAddress" class = "text-danger"></span>
                   <label class="form-label">Email</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.Password" />
                   <label class="form-label">Hasło</label>
+                  <span asp-validation-for="Password" class = "text-danger"></span>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <input type="password" id="ConfirmPassword" class="form-control" asp-for="@Model.ConfirmPassword" />
+                  <span asp-validation-for="ConfirmPassword" class = "text-danger"></span>
                   <label class="form-label">Powtórz hasło</label>
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
+                      
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
-
+                <p>
+                     @if (TempData["errorMessage"] != null)
+                    {
+                            <div class="alert alert-danger">
+                               <p style= "text-align: center;"> @TempData["errorMessage"]</p>
+                            </div>
+                    }
+                </p>
+                  
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a asp-action="Login"class="fw-bold text-body"><u>Login here</u></a></p>
 
               </form>
