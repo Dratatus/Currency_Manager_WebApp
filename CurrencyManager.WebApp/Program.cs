@@ -4,10 +4,12 @@ using CurrencyManager.Data.Repositories;
 using CurrencyManager.Logic.Services.CurrencyProvider;
 using CurrencyManager.Logic.Services.ExchangeRates;
 using CurrencyManager.Logic.Services.ExchangeRatesProvider;
+using CurrencyManager.WebApp.Models.Services.Converter;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 namespace CurrencyManager.WebApp
 {
@@ -30,16 +32,19 @@ namespace CurrencyManager.WebApp
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ICurrencyProviderService, HardcodedCurrencyProviderService>();
             builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
-            builder.Services.AddTransient<IExchangeRateProviderService, ApiExchangeRatesProviderService>();
+            builder.Services.AddTransient<IExchangeRateProviderService, HardcodedExchangeRatesProviderService>();
+            builder.Services.AddTransient<IConverterService, ConverterService>();
 
-            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddSingleton<IUserService, UserService>();
 
             builder.Services.AddTransient<IRepositoryBase<User>, RepositoryBase<User>>();
             builder.Services.AddSingleton<CurrencyManagerDbContext>();
+            
 
             var app = builder.Build();
 
             var currencyManagerDbContext = app.Services.GetService<CurrencyManagerDbContext>();
+
             currencyManagerDbContext.Database.EnsureCreated();
 
             // Configure the HTTP request pipeline.
@@ -60,7 +65,7 @@ namespace CurrencyManager.WebApp
             // Ustawianie domyœlnej strony (po uruchomieniu apki)
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Currency}/{action=Index}");
+                pattern: "{controller=Login}/{action=Login}");
 
             app.Run();
         }

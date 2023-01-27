@@ -26,11 +26,11 @@ namespace CurrencyManager.WebApp.Controllers
         {
             try
             {
-                bool loginSuccess = await _userService.LoginAsync(passes.EmailAddress, passes.Password);
+                bool loginSuccess = await _userService.LoginAsync(passes);
 
                 if (loginSuccess)
                 {
-                    return Redirect("Currency/Index");
+                    return Redirect("../Currency/Index");
 
                 }
                 else

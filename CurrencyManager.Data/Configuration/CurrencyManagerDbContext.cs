@@ -22,6 +22,7 @@ namespace CurrencyManager.Data.Configutation
                 entityTypeBuilder.ToTable("Users");
                 entityTypeBuilder.HasKey(u => u.Id);
                 entityTypeBuilder.Property(u => u.CreationDate);
+                entityTypeBuilder.Property(u => u.IsPremium);
 
                 entityTypeBuilder.Property(u => u.PassesId);
                 entityTypeBuilder.HasOne(u => u.Passes).WithMany().HasForeignKey(u => u.PassesId);
@@ -59,9 +60,12 @@ namespace CurrencyManager.Data.Configutation
             modelBuilder.Entity<ExchangeRateHistory>(entityTypeBuilder =>
             {
                 entityTypeBuilder.ToTable("ExchangeRateHistory");
-                entityTypeBuilder.HasKey(p => p.Id);
-                entityTypeBuilder.Property(p => p.CreationDate);
-                entityTypeBuilder.Property(p => p.UserId);
+                entityTypeBuilder.HasKey(erh => erh.Id);
+                entityTypeBuilder.Property(erh => erh.CreationDate);
+                entityTypeBuilder.Property(erh => erh.UserId);
+                entityTypeBuilder.Property(erh => erh.BoughtCurrency);
+                entityTypeBuilder.Property(erh => erh.SelledCurrency);
+                entityTypeBuilder.Property(erh => erh.Amount);
             });
         }
     }

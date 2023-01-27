@@ -1,5 +1,6 @@
 ﻿using CurrencyManager.Logic.Models;
 using CurrencyManager.Logic.Services.ExchangeRatesProvider;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,6 +25,16 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public decimal GetExchangeRate(string currencyToPurchase, string currencyToSell)
         {
+            if (string.IsNullOrEmpty(currencyToPurchase))
+            {
+                throw new ArgumentException();
+            }
+
+            if (string.IsNullOrEmpty(currencyToSell))
+            {
+                throw new ArgumentException();
+            }
+
             string currencyToPurchaseUpper = currencyToPurchase.ToUpper();
             string currencyToSellUpper = currencyToSell.ToUpper();
 
@@ -34,6 +45,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public decimal GetAmonuntOfExchangingMoney(string currencyToPurchase, string currencyToSell, decimal amountOfmoney)
         {
+   
             decimal exchangeRate =  GetExchangeRate(currencyToPurchase, currencyToSell);
 
             decimal amonuntOfExchangingMoney = exchangeRate * amountOfmoney;
@@ -43,6 +55,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public bool CurrencyExists(string currencyCode)
         {
+          
             string currencyCodeUpper = currencyCode.ToUpper();
 
             bool currencyExists = _exchangeRates.Any(er => er.CurrencyToPurchase.Code == currencyCodeUpper);

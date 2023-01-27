@@ -31,8 +31,8 @@ namespace CurrencyManager.Data.Repositories
             var entity = await _currencyManagerDbContext.FindAsync<TEntity>(id);
 
             return entity;
-        }
-
+        } 
+        
         public async virtual Task<IEnumerable<TEntity>> GetAllAsync()
         {
             var entities = await _currencyManagerDbContext

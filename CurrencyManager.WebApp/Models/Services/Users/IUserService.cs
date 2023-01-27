@@ -8,8 +8,11 @@ namespace CurrencyManager.WebApp.Services.Users
     {
         Task<IEnumerable<User>> GetAllUsers();
         Task<bool> UserExists(string emailAddress);
-        Task<bool> LoginAsync(string emailAddress, string password);
+        Task<bool> LoginAsync(Passes passes);
 
-        Task RegisterAsync(string emailAddress, string password);
+        Task RegisterAsync(string email, string password);
+        bool IsUserLogged();
+        public User LoggedUser { get;}
+
     }
 }

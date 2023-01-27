@@ -1,5 +1,4 @@
 ﻿using CurrencyManager.Logic.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -115,7 +114,6 @@ namespace CurrencyManager.Logic.Services.ExchangeRatesProvider
                     CurrencyToSell = usdCurrency,
                     Rate = 1
                 },
-
             };
         }
 

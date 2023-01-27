@@ -1,4 +1,5 @@
 ﻿using CurrencyManager.Logic.Services.CurrencyProvider;
+using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

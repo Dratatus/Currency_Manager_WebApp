@@ -1,7 +1,7 @@
 ﻿@using CurrencyManager.WebApp.Models.ViewModels
 @{
     ViewData["Title"] = "Home Page";
-    Layout = null;
+    Layout = "LoggedNavbar";
 }
 <!--Zapis wiążący klasę modelu z widokiem cshtml, to umożliwia przesyłania danych między widokiem a kontrolerem-->
 @model CurrencyViewModel
@@ -50,21 +50,23 @@
                 <div class="form-outline mb-4">
                   <label class="form-label">Ilość pieniędzy do konwersji</label>
                   <input type="number" id="Amount" class="form-control"asp-for="Amount"/>
+
                 </div>
                     @{
                         string rateMessage = $"Kurs waluty {ViewBag.Message2}/{ViewBag.Message}: {Model.Rate}";
                         string amounMessage = $"Liczbba przekonwertowanych pieniędzy: {Model.Amount} {ViewBag.Message2}";
                         string totalMoneyMessage = $"Liczbba pieniędzy po konwersji: {Model.TotalAmount} {ViewBag.Message}";
-                   };
+                   }
 
              <!-- Button trigger modal -->
+             <div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Wyświetl
                 </button>
-                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="submit" class="btn btn-primary" data-bs-toggle="" data-bs-target="#exampleModal">
                   Konwertuj
                 </button>
-
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">

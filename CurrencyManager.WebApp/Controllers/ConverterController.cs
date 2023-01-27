@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using CurrencyManager.Logic.Services.ExchangeRates;
 using System.Diagnostics;
+using CurrencyManager.WebApp.Services.Users;
+using CurrencyManager.Data.Entities;
+using CurrencyManager.Data.Repositories;
+using CurrencyManager.WebApp.Models.Services.Converter;
 
 namespace CurrencyManager.WebApp.Controllers
 {
@@ -16,11 +20,17 @@ namespace CurrencyManager.WebApp.Controllers
     {
         private readonly ICurrencyProviderService _currencyProviderService;
         private readonly IExchangeRatesService _exchangeRatesService;
+        private readonly IUserService _userService;
+        private readonly IRepositoryBase<User> _repositoryBase;
+        private readonly IConverterService _converterService;
 
-        public ConverterController(ICurrencyProviderService currencyProviderService, IExchangeRatesService exchangeRatesService)
+        public ConverterController(ICurrencyProviderService currencyProviderService, IExchangeRatesService exchangeRatesService, IUserService userService, IRepositoryBase<User> repositoryBase, IConverterService converterService)
         {
             _currencyProviderService = currencyProviderService;
             _exchangeRatesService = exchangeRatesService;
+            _userService = userService;
+            _repositoryBase = repositoryBase;
+            _converterService = converterService;
         }
         [HttpGet]
         public async Task<IActionResult> Converter()
@@ -41,10 +51,14 @@ namespace CurrencyManager.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Converter(CurrencyViewModel currencyModel)
         {
+            var user = _userService.LoggedUser;
             await _exchangeRatesService.InitializeData();
+        
+
             string selectedCurrencytoPurchase = currencyModel.CurrencyToPurchase.Code;
             string selectedCurrencyToSell = currencyModel.CurrencyToSell.Code;
             decimal selectedAmount = currencyModel.Amount;
+
 
             var rate = _exchangeRatesService.GetExchangeRate(selectedCurrencytoPurchase, selectedCurrencyToSell);
 
@@ -60,7 +74,7 @@ namespace CurrencyManager.WebApp.Controllers
                 currencyDisplayModel.CurrencySelectedList.Add(new SelectListItem { Text = currency.Code, Value = currency.Code });
             }
 
-            decimal totalMoney =  _exchangeRatesService.GetAmonuntOfExchangingMoney(selectedCurrencytoPurchase,selectedCurrencyToSell, selectedAmount);
+            decimal totalMoney = _exchangeRatesService.GetAmonuntOfExchangingMoney(selectedCurrencytoPurchase, selectedCurrencyToSell, selectedAmount);
 
             currencyDisplayModel.Rate = rate;
             currencyDisplayModel.Amount = selectedAmount;
@@ -68,10 +82,23 @@ namespace CurrencyManager.WebApp.Controllers
             currencyDisplayModel.CurrencyToPurchase = currencyModel.CurrencyToPurchase;
             currencyDisplayModel.CurrencyToSell = currencyModel.CurrencyToSell;
 
+            user.ExchangeRateHistory = new List<ExchangeRateHistory>
+            {
+                new ExchangeRateHistory
+                {
+                    SelledCurrency = currencyDisplayModel.CurrencyToSell.Code,
+                    BoughtCurrency = currencyDisplayModel.CurrencyToPurchase.Code,
+                    Amount = currencyDisplayModel.Amount,
+                    OperationName = "Wymiana waluty"
+
+                }
+            };
+
             ViewBag.Message = currencyDisplayModel.CurrencyToPurchase.Code;
             ViewBag.Message2 = currencyDisplayModel.CurrencyToSell.Code;
 
-            Debug.WriteLine("Co ci chuju nie pasuje w tym kodzie?");
+            await _repositoryBase.SaveChangesAsync();
+
             return View(currencyDisplayModel);
         }
     }

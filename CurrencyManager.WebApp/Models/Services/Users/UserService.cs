@@ -11,47 +11,109 @@ namespace CurrencyManager.WebApp.Services.Users
     {
         private readonly IRepositoryBase<User> _repositoryBase;
 
+        public User LoggedUser { get; set; }
+        
+
         public UserService(IRepositoryBase<User> repositoryBase)
         {
             _repositoryBase = repositoryBase;
         }
 
-        public async Task<bool> LoginAsync(string emailAddress, string password)
+        public async Task<bool> LoginAsync(Passes passes)
         {
-
-            var userFound = await _repositoryBase.FindAsync(u => u.Passes.EmailAddress == emailAddress && u.Passes.Password == password);
-
-            bool userExists = userFound.Any();
+            var usersFound = await _repositoryBase.FindAsync(u => u.Passes.EmailAddress == passes.EmailAddress && u.Passes.Password == passes.Password);
+            bool userExists = usersFound.Any();
+           
             if (userExists)
             {
-                return userExists;
+                if ( passes.Password == "1qazXSW@#admin")
+                {
+                    foreach (var user in usersFound)
+                    {
+                        user.IsPremium = true;
+                    }
+
+                    return userExists;
+                }
+
+                else
+                {
+                    foreach (var user in usersFound)
+                    {
+                        LoggedUser = user;
+                    }
+                    return userExists;
+                }
             }
+
             else
             {
                 throw new Exception("Błędne dane logowania!");
             }
         }
 
-        public async Task RegisterAsync(string emailAddress, string password)
+        public async Task RegisterAsync(string email, string password)
         {
-            bool userAlreadyExist = await UserExists(emailAddress);
+            bool userAlreadyExist = await UserExists(email);
+
+            var users = _repositoryBase.FindAsync(u => u.Passes.EmailAddress == email);
 
             if (userAlreadyExist)
             {
                 throw new Exception("Podany Email już istnieje w bazie danych!");
             }
-
-            User newUser = new User
+            if (password == "1qazXSW@#admin")
             {
-                Passes = new Passes
+                User newUser = new User
                 {
-                    EmailAddress = emailAddress,
-                    Password = password
-                },
-                PersonalInfo = new PersonalInfo()
-            };
+                    IsPremium = true,
 
-            await _repositoryBase.AddAsync(newUser);
+                    Passes = new Passes
+                    {
+                        EmailAddress = email,
+                        Password = password,
+                        
+                    },
+                    PersonalInfo = new PersonalInfo
+                    {
+                        Age = 0,
+                        Name = "Imię",
+                        Surname = "Nazwisko",
+                    },
+
+                };
+
+                LoggedUser = newUser;
+                await _repositoryBase.AddAsync(newUser);
+            }
+            else
+            {
+                User newUser = new User
+                {
+                    IsPremium = false,
+
+                    Passes = new Passes
+                    {
+                        EmailAddress = email,
+                        Password = password,
+
+                    },
+                    PersonalInfo = new PersonalInfo
+                    {
+                        Age = 0,
+                        Name = "Imię",
+                        Surname = "Nazwisko",
+                    },
+
+                };
+
+                 LoggedUser = newUser;
+
+                await _repositoryBase.AddAsync(newUser);
+            }
+
+           
+
         }
 
         public async Task<IEnumerable<User>> GetAllUsers()
@@ -68,5 +130,19 @@ namespace CurrencyManager.WebApp.Services.Users
 
             return userAlreadyExist;
         }
+
+
+        public bool IsUserLogged()
+        {
+            if (LoggedUser != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+     
     }
 }

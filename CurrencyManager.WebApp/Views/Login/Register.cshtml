@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CurrencyManager.WebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/Register.css" />
 
 </head>
@@ -28,19 +28,19 @@
               <form method="post" class="form-check">
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.EmailAddress" />
+                  <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="EmailAddress" />
                   <span asp-validation-for="EmailAddress" class = "text-danger"></span>
                   <label class="form-label">Email</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.Password" />
+                  <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Password" />
                   <label class="form-label">Hasło</label>
                   <span asp-validation-for="Password" class = "text-danger"></span>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="ConfirmPassword" class="form-control" asp-for="@Model.ConfirmPassword" />
+                  <input type="password" id="ConfirmPassword" class="form-control" asp-for="ConfirmPassword" />
                   <span asp-validation-for="ConfirmPassword" class = "text-danger"></span>
                   <label class="form-label">Powtórz hasło</label>
                 </div>
