@@ -1,0 +1,16 @@
+.my-custom-scrollbar {
+   
+    position: relative;
+    height: 620px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+
+}
+.my-custom-space {
+    padding-top: 100px;
+    padding-left: 120px;
+    padding-right: 120px;
+}

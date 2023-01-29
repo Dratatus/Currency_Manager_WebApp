@@ -1,5 +1,6 @@
 ﻿using CurrencyManager.Data.Entities;
 using CurrencyManager.Data.Repositories;
+using CurrencyManager.WebApp.Models.Services.Profile;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,11 +10,13 @@ namespace CurrencyManager.WebApp.Controllers
     public class ProfileController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IProfileService _profileService;
         private readonly IRepositoryBase<User> _repositoryBase;
-        public ProfileController(IUserService userService, IRepositoryBase<User> repositoryBase)
+        public ProfileController(IUserService userService, IRepositoryBase<User> repositoryBase, IProfileService profileService )
         {
             _userService = userService;
             _repositoryBase = repositoryBase;
+            _profileService = profileService;
         }
         [HttpGet]
         public IActionResult Profile()
@@ -38,13 +41,17 @@ namespace CurrencyManager.WebApp.Controllers
         [HttpPost]
         public IActionResult Profile(User user)
         {
-            var loogedUser = _userService.LoggedUser;
+            var loggedUser = _userService.LoggedUser;
 
-            loogedUser.Passes = user.Passes;
-            loogedUser.PersonalInfo = user.PersonalInfo;
+            bool premiumAccount = _profileService.CheckUserPremiumChanges(user.Passes.Password);
+
+
+            loggedUser.IsPremium = premiumAccount;
+            loggedUser.Passes = user.Passes;
+            loggedUser.PersonalInfo = user.PersonalInfo;
 
             _repositoryBase.SaveChangesAsync();
-            return View(loogedUser);
+            return View(loggedUser);
         }
     }
 }

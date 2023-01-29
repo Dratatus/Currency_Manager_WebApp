@@ -12,27 +12,68 @@ namespace CurrencyManager.WebApp.Services.Users
         private readonly IRepositoryBase<User> _repositoryBase;
 
         public User LoggedUser { get; set; }
-        
+
 
         public UserService(IRepositoryBase<User> repositoryBase)
         {
             _repositoryBase = repositoryBase;
         }
 
+        //private async Task<bool> CreateTestingUsers()
+        //{
+        //    User premiumUser = new User
+        //    {
+        //        IsPremium = true,
+
+        //        Passes = new Passes
+        //        {
+        //            EmailAddress = "premium@user.pl",
+        //            Password = "1qazXSW@#premium"
+
+        //        },
+        //        PersonalInfo = new PersonalInfo
+        //        {
+        //            Age = 0,
+        //            Name = "Imię",
+        //            Surname = "Nazwisko",
+        //        },
+        //    };
+
+        //    User standardUser = new User
+        //    {
+        //        IsPremium = false,
+
+        //        Passes = new Passes
+        //        {
+        //            EmailAddress = "standard@user.pl",
+        //            Password = "1qazXSW@#"
+        //        },
+        //        PersonalInfo = new PersonalInfo
+        //        {
+        //            Age = 0,
+        //            Name = "Imię",
+        //            Surname = "Nazwisko",
+        //        },
+        //    };
+        //    var users = await _repositoryBase.GetAllAsync();
+
+        //    await _repositoryBase.AddAsync(premiumUser);
+        //    await _repositoryBase.AddAsync(standardUser);
+        //}
         public async Task<bool> LoginAsync(Passes passes)
         {
             var usersFound = await _repositoryBase.FindAsync(u => u.Passes.EmailAddress == passes.EmailAddress && u.Passes.Password == passes.Password);
             bool userExists = usersFound.Any();
-           
+
             if (userExists)
             {
-                if ( passes.Password == "1qazXSW@#admin")
+                if (passes.Password == "1qazXSW@#admin")
                 {
                     foreach (var user in usersFound)
                     {
                         user.IsPremium = true;
+                        LoggedUser = user;
                     }
-
                     return userExists;
                 }
 
@@ -72,7 +113,7 @@ namespace CurrencyManager.WebApp.Services.Users
                     {
                         EmailAddress = email,
                         Password = password,
-                        
+
                     },
                     PersonalInfo = new PersonalInfo
                     {
@@ -107,12 +148,12 @@ namespace CurrencyManager.WebApp.Services.Users
 
                 };
 
-                 LoggedUser = newUser;
+                LoggedUser = newUser;
 
                 await _repositoryBase.AddAsync(newUser);
             }
 
-           
+
 
         }
 
@@ -143,6 +184,6 @@ namespace CurrencyManager.WebApp.Services.Users
                 return false;
             }
         }
-     
+
     }
 }

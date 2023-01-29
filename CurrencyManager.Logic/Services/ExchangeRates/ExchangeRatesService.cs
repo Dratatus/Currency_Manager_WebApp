@@ -38,7 +38,12 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
             string currencyToPurchaseUpper = currencyToPurchase.ToUpper();
             string currencyToSellUpper = currencyToSell.ToUpper();
 
-            var exchangeRate = _exchangeRates.Single(er => er.CurrencyToPurchase.Code == currencyToPurchaseUpper && er.CurrencyToSell.Code == currencyToSellUpper);
+            var exchangeRate = _exchangeRates.SingleOrDefault(er => er.CurrencyToPurchase.Code == currencyToPurchaseUpper && er.CurrencyToSell.Code == currencyToSellUpper);
+
+            if (exchangeRate == null)
+            {
+                throw new ArgumentException();
+            }
 
             return exchangeRate.Rate;
         }

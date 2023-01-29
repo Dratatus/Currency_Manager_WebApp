@@ -3951,7 +3951,9 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
-    padding-bottom: 9125rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 20px;
+    margin-left: 20px;
     margin-right: 1rem;
     font-size: 1.25rem;
     text-decoration: none;
@@ -4212,7 +4214,7 @@ textarea.form-control-lg {
 }
 
 .navbar-dark .navbar-brand {
-  color: #fff;
+    color: #fff;
 }
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;

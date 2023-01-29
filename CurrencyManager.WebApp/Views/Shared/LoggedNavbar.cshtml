@@ -4,17 +4,37 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Currency Manager</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Currency Manager</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link"   <a asp-controller ="Currency" asp-action="Index"><p>Home</p></a></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  <a asp-controller ="Converter" asp-action="Converter"><p>Konwerter Walut</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  <a asp-controller ="Profile" asp-action="Profile"><p>Profil</p></a></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </header>
+
+    <div class="">
+        <main role="">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+
+ @*<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
               <li class="nav-item active">
                 <a class="nav-link"   <a asp-controller ="Currency" asp-action="Index"><p>Home</p></a>
               </li>
@@ -24,13 +44,4 @@
               <li class="nav-item">
                 <a class="nav-link"  <a asp-controller ="Profile" asp-action="Profile"><p>Profil</p></a>
               </li>
-    </ul>
-  </div>
-</nav>
-    </header>
-    <div class="">
-        <main role="">
-            @RenderBody()
-        </main>
-    </div>
-</body>
+        </div>    *@

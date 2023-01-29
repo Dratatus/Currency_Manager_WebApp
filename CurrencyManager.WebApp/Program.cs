@@ -5,6 +5,7 @@ using CurrencyManager.Logic.Services.CurrencyProvider;
 using CurrencyManager.Logic.Services.ExchangeRates;
 using CurrencyManager.Logic.Services.ExchangeRatesProvider;
 using CurrencyManager.WebApp.Models.Services.Converter;
+using CurrencyManager.WebApp.Models.Services.Profile;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,10 +31,12 @@ namespace CurrencyManager.WebApp
             // Np. Dla HomeController i akcji Index, bêdzie szukaæ widoku Views/Home/Index.cshtml
             // Np. Dla CurrencyController i akcji ShowCurrencies, bêdzie szukaæ widoku Views/Currency/ShowCurrencies.cshtml
             builder.Services.AddControllersWithViews();
-            builder.Services.AddTransient<ICurrencyProviderService, HardcodedCurrencyProviderService>();
+            builder.Services.AddTransient<ICurrencyProviderService, ApiCurrencyProviderService>();
             builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
-            builder.Services.AddTransient<IExchangeRateProviderService, HardcodedExchangeRatesProviderService>();
+            builder.Services.AddTransient<IExchangeRateProviderService, ApiExchangeRatesProviderService>();
+            builder.Services.AddTransient<IProfileService, ProfileService>();
             builder.Services.AddTransient<IConverterService, ConverterService>();
+
 
             builder.Services.AddSingleton<IUserService, UserService>();
 

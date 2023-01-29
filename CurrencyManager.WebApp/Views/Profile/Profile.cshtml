@@ -34,7 +34,7 @@
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h4 class="text-right">Ustawienia Profilu</h4>
                 </div>
                <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">Imię</label><input type="text" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Name" placeholder="Imię" value="@Model.PersonalInfo.Name"> <span asp-validation-for="PersonalInfo.Name"></span></div>
@@ -42,8 +42,8 @@
                     <div class="col-md-6"><label class="labels">Wiek</label><input type="int" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Age" placeholder="Wiek" value="@Model.PersonalInfo.Age"> <span asp-validation-for="@Model.PersonalInfo.Age"></span></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Email</label><input type="email" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.EmailAddress" placeholder="Email" value=""> <span asp-validation-for="Passes.EmailAddress"></span></div>
-                    <div class="col-md-6"><label class="labels">Hasło</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.Password" placeholder="Hasło" value=""> <span asp-validation-for="Passes.Password"></span></div>
+                    <div class="col-md-6"><label class="labels">Email</label><input type="email" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.EmailAddress" placeholder="Email" value="@Model.Passes.EmailAddress"> <span asp-validation-for="Passes.EmailAddress"></span></div>
+                    <div class="col-md-6"><label class="labels">Hasło</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.Password" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.Password"></span></div>
                 </div>
                 <div class="row mt-3">
                             @if (@Model.IsPremium)
