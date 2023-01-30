@@ -23,15 +23,19 @@ Projekt został zaprojektowany tak by baza danych automatycznie utworzyła się 
 
 Dowolny użytkownik ma dostęp do strony ``https://localhost:7104/Login/Register`` na której w formularzu zostawia dane logowania: adres email i hasło. Użytkownik o haśle: ``1qazXSW@#premium`` będzie posiadał status ``Użytkownika Premium``.
 
-![Formularz rejestracji](/register.png)
+![rejestracja](https://user-images.githubusercontent.com/92109490/215595928-751456fd-195f-4500-998d-3426229edfd9.png)
 
 Po wysłaniu formularza w przypadku ustawienia poprawnych danych użytkownik jest przenoszony do strony głównej z wyświetlanymi dosępnymi walutami ``https://localhost:7104/Currency/Index``.
+
+
+![homePage](https://user-images.githubusercontent.com/92109490/215595920-99003c67-3560-4861-a1c5-c3b3dd748ac1.png)
+
 
 ### Logowanie
 
 Do strony z logowaniem: ``https://localhost:7104/login`` ma dostęp dowolny użytkownik. Należy podać adres email i hasło.
 
-![Formularz logowania](/login.png)
+![Zrzut ekranu 2023-01-30 220631](https://user-images.githubusercontent.com/92109490/215595930-6ed66c2e-c069-430b-be2c-f2ae8b84bf03.png)
 
 Po przesłaniu formularza w przypadku podania poprawnych danych logowania użytkownik jest przenoszony pod adres: ``https://localhost:7104/Currency/Index`` do strony głównej z wyświetlanymi dosępnymi walutami.
 
@@ -41,7 +45,7 @@ Po przesłaniu formularza w przypadku podania poprawnych danych logowania użytk
 Po udanym logowaniu/rejestracji użytkownik posiada dostęp do zakładki ``Konwerter Walut`` po której kliknięciu zostaje przenoszony pod adres: ``https://localhost:7104/Converter/Converter``
 
 
-![Formularz Konwertera](/login.png)
+![konwerter](https://user-images.githubusercontent.com/92109490/215595924-3bce8bf0-0dfa-4df7-8b29-cd52db235512.png)
 
 
 W konwerterze należy wybrać walutę sprzedawaną, kupowaną oraz ilość wymienianych pieniędzy.
@@ -53,7 +57,7 @@ Po wybraniu opisanych opcji należy zatwierdzić wybór przyciskiem ``Konwertuj`
 
 Po udanym logowaniu/rejestracji użytkownik posiada dostęp do zakładki ``Profil`` po której kliknięciu zostaje przenoszony pod adres: ``https://localhost:7104/Profile/Profile``
 
-![Formularz Profilu](/login.png)
+![profile](https://user-images.githubusercontent.com/92109490/215595926-8a4a04bb-f0ce-469b-bfa8-45d2e435cc39.png)
 
 Na stronie profilu użytkownik może zaktualizować/zmienić swoje dane personalne takie jak:
 - Imię 
@@ -67,6 +71,7 @@ Na stronie profilu użytkownik może zaktualizować/zmienić swoje dane personal
 By zmienić Typ użytkownika ze standardowego na użytkownika premium należy zmienić hasło na: `1qazXSW@#premium`
 
 
+![exchangeRateHistory](https://user-images.githubusercontent.com/92109490/215595932-db29798f-03a4-4492-ad13-79c6f20dd249.png)
 
 
 
@@ -95,7 +100,7 @@ oraz dwie implementacje Interfejsu IExchangeRateProviderService dostarczającego
 
 Projekt domyślnie używa repozytoriów produkcyjnych. W przypadku błędów związanych z Api typu: ``Bad request`` należy zamknąć i ponownie uruchomić projekt. By zmienić repozytoria produkcyjne na repozytoria testowe należy w pliku Program.cs zmienić ``ApiCurrencyProviderService`` na ``HardcodedCurrencyProviderService`` oraz ``ApiExchangeRatesProviderService`` na ``HardcodedExchangeRatesProviderService`` 
 
-![Zmiana Bindowania](/login.png)
+![bindowanie](https://user-images.githubusercontent.com/92109490/215597318-8487a9bf-ab93-4213-a94a-d52bb9952d24.png)
 
 
 
