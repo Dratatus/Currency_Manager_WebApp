@@ -21,7 +21,6 @@ namespace CurrencyManager.Data.Entities
         [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$", ErrorMessage = "Hasło musi mieć od 8 do 15 znaków i zawierać co najmniej jeden znak specjalny, jedną cyfrę, małą i dużą literę")]
         [Compare("Password", ErrorMessage ="Hasła muszą być takie same!")]
-
         public string ConfirmPassword { get; set; }
 
     }

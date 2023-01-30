@@ -1,7 +1,11 @@
-﻿namespace CurrencyManager.WebApp.Models.Services.Converter
+﻿using CurrencyManager.WebApp.Models.ViewModels;
+using System.Threading.Tasks;
+
+namespace CurrencyManager.WebApp.Models.Services.Converter
 {
     public interface IConverterService
     {
-        public bool IsValueCorrect(decimal value);
+        Task<CurrencyViewModel> GetCurrenciesModelToDisplay();
+        bool IsValueCorrect(decimal value);
     }
 }

@@ -32,8 +32,8 @@ namespace CurrencyManager.WebApp
             // Np. Dla CurrencyController i akcji ShowCurrencies, bêdzie szukaæ widoku Views/Currency/ShowCurrencies.cshtml
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ICurrencyProviderService, ApiCurrencyProviderService>();
-            builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
             builder.Services.AddTransient<IExchangeRateProviderService, ApiExchangeRatesProviderService>();
+            builder.Services.AddTransient<IExchangeRatesService, ExchangeRatesService>();
             builder.Services.AddTransient<IProfileService, ProfileService>();
             builder.Services.AddTransient<IConverterService, ConverterService>();
 

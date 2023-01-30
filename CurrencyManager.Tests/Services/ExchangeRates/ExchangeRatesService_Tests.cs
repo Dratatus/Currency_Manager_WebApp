@@ -42,5 +42,6 @@ namespace CurrencyManager.Tests.Services.ExchangeRateService
 
         }
         // 2 test do tej samej metody - upewnienie że rzuca błąd kiedy nie znajdzie waluty o którą prosisz
+
     }
 }

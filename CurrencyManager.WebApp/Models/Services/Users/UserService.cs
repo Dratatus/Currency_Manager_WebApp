@@ -11,55 +11,50 @@ namespace CurrencyManager.WebApp.Services.Users
     {
         private readonly IRepositoryBase<User> _repositoryBase;
 
+        private User StandardTestUser { get; set; }
+        private User PremiumTestUser { get; set; }
         public User LoggedUser { get; set; }
-
 
         public UserService(IRepositoryBase<User> repositoryBase)
         {
             _repositoryBase = repositoryBase;
+            StandardTestUser = new User
+            {
+                IsPremium = false,
+
+                Passes = new Passes
+                {
+                    EmailAddress = "standard@user.pl",
+                    Password = "1qazXSW@#",
+
+                },
+                PersonalInfo = new PersonalInfo
+                {
+                    Age = 20,
+                    Name = "standard",
+                    Surname = "User",
+                }
+            };
+            PremiumTestUser = new User
+            {
+                IsPremium = true,
+
+                Passes = new Passes
+                {
+                    EmailAddress = "premium@user.pl",
+                    Password = "1qazXSW@#premium",
+
+                },
+                PersonalInfo = new PersonalInfo
+                {
+                    Age = 20,
+                    Name = "Premium",
+                    Surname = "User",
+                }
+            };
+
         }
 
-        //private async Task<bool> CreateTestingUsers()
-        //{
-        //    User premiumUser = new User
-        //    {
-        //        IsPremium = true,
-
-        //        Passes = new Passes
-        //        {
-        //            EmailAddress = "premium@user.pl",
-        //            Password = "1qazXSW@#premium"
-
-        //        },
-        //        PersonalInfo = new PersonalInfo
-        //        {
-        //            Age = 0,
-        //            Name = "Imię",
-        //            Surname = "Nazwisko",
-        //        },
-        //    };
-
-        //    User standardUser = new User
-        //    {
-        //        IsPremium = false,
-
-        //        Passes = new Passes
-        //        {
-        //            EmailAddress = "standard@user.pl",
-        //            Password = "1qazXSW@#"
-        //        },
-        //        PersonalInfo = new PersonalInfo
-        //        {
-        //            Age = 0,
-        //            Name = "Imię",
-        //            Surname = "Nazwisko",
-        //        },
-        //    };
-        //    var users = await _repositoryBase.GetAllAsync();
-
-        //    await _repositoryBase.AddAsync(premiumUser);
-        //    await _repositoryBase.AddAsync(standardUser);
-        //}
         public async Task<bool> LoginAsync(Passes passes)
         {
             var usersFound = await _repositoryBase.FindAsync(u => u.Passes.EmailAddress == passes.EmailAddress && u.Passes.Password == passes.Password);
@@ -67,7 +62,8 @@ namespace CurrencyManager.WebApp.Services.Users
 
             if (userExists)
             {
-                if (passes.Password == "1qazXSW@#admin")
+
+                if (passes.Password == "1qazXSW@#premium")
                 {
                     foreach (var user in usersFound)
                     {
@@ -87,6 +83,23 @@ namespace CurrencyManager.WebApp.Services.Users
                 }
             }
 
+            else if (!userExists)
+            {
+                if (passes.EmailAddress == "standard@user.pl" && passes.Password == "1qazXSW@#")
+                {
+                    LoggedUser = StandardTestUser;
+                    return true;
+                }
+
+                else if (passes.EmailAddress == "premium@user.pl" && passes.Password == "1qazXSW@#premium")
+                {
+                    LoggedUser = PremiumTestUser;
+                    return true;
+                }
+
+                throw new Exception("Błędne dane logowania!");
+            }
+
             else
             {
                 throw new Exception("Błędne dane logowania!");
@@ -103,7 +116,7 @@ namespace CurrencyManager.WebApp.Services.Users
             {
                 throw new Exception("Podany Email już istnieje w bazie danych!");
             }
-            if (password == "1qazXSW@#admin")
+            if (password == "1qazXSW@#premium")
             {
                 User newUser = new User
                 {
@@ -120,7 +133,7 @@ namespace CurrencyManager.WebApp.Services.Users
                         Age = 0,
                         Name = "Imię",
                         Surname = "Nazwisko",
-                    },
+                    }
 
                 };
 
@@ -152,15 +165,11 @@ namespace CurrencyManager.WebApp.Services.Users
 
                 await _repositoryBase.AddAsync(newUser);
             }
-
-
-
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public void Logout()
         {
-            var users = await _repositoryBase.GetAllAsync();
-            return users;
+            LoggedUser = null;
         }
 
         public async Task<bool> UserExists(string emailAddress)
@@ -179,6 +188,7 @@ namespace CurrencyManager.WebApp.Services.Users
             {
                 return true;
             }
+
             else
             {
                 return false;

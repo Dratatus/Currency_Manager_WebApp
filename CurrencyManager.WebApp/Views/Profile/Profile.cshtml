@@ -6,7 +6,7 @@
 @model User
 <head>
 
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
        <link rel="stylesheet" href="~/css/Profile.css" />
 </head>
 <body>
@@ -42,8 +42,9 @@
                     <div class="col-md-6"><label class="labels">Wiek</label><input type="int" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Age" placeholder="Wiek" value="@Model.PersonalInfo.Age"> <span asp-validation-for="@Model.PersonalInfo.Age"></span></div>
                 </div>
                 <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Hasło</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.Password)" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.Password"></span></div>
                     <div class="col-md-6"><label class="labels">Email</label><input type="email" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.EmailAddress" placeholder="Email" value="@Model.Passes.EmailAddress"> <span asp-validation-for="Passes.EmailAddress"></span></div>
-                    <div class="col-md-6"><label class="labels">Hasło</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.Password" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.Password"></span></div>
+                    <div class="col-md-6"><label class="labels">Potwierdź hasło</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.ConfirmPassword)" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.ConfirmPassword"></span></div>
                 </div>
                 <div class="row mt-3">
                             @if (@Model.IsPremium)

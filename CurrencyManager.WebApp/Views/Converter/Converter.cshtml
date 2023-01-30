@@ -33,7 +33,7 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Converter Walut</h2>
+              <h2 class="text-uppercase text-center mb-5">Konwerter Walut</h2>
 
               <form asp-controller="Converter" asp-action="Converter" method="post" class="form-check">
 
@@ -50,6 +50,7 @@
                 <div class="form-outline mb-4">
                   <label class="form-label">Ilość pieniędzy do konwersji</label>
                   <input type="number" id="Amount" class="form-control"asp-for="Amount"/>
+                  <span asp-validation-for="Amount" class = "text-danger"></span>
 
                 </div>
                     @{

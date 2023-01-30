@@ -4,6 +4,7 @@ using CurrencyManager.WebApp.Models.Services.Profile;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace CurrencyManager.WebApp.Controllers
 {
@@ -30,12 +31,11 @@ namespace CurrencyManager.WebApp.Controllers
 
                 return View(user);
             }
+
             else
             {
                 throw new Exception("Musisz się najpierw zalogować!");
             }
-           
-            
         }
 
         [HttpPost]
@@ -43,14 +43,18 @@ namespace CurrencyManager.WebApp.Controllers
         {
             var loggedUser = _userService.LoggedUser;
 
-            bool premiumAccount = _profileService.CheckUserPremiumChanges(user.Passes.Password);
+            if (ModelState.IsValid)
+            {
+                bool premiumAccount = _profileService.CheckUserPremiumChanges(user.Passes.Password);
 
+                loggedUser.IsPremium = premiumAccount;
+                loggedUser.Passes = user.Passes;
+                loggedUser.PersonalInfo = user.PersonalInfo;
 
-            loggedUser.IsPremium = premiumAccount;
-            loggedUser.Passes = user.Passes;
-            loggedUser.PersonalInfo = user.PersonalInfo;
+                _repositoryBase.SaveChangesAsync();
 
-            _repositoryBase.SaveChangesAsync();
+                return View(loggedUser);
+            }
             return View(loggedUser);
         }
     }

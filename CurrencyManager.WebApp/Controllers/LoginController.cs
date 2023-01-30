@@ -40,6 +40,7 @@ namespace CurrencyManager.WebApp.Controllers
                     return View();
                 }
             }
+
             catch (Exception e)
             {
 
@@ -70,6 +71,7 @@ namespace CurrencyManager.WebApp.Controllers
                     return View();
                 }
             }
+
             else
             {
                 return View();
