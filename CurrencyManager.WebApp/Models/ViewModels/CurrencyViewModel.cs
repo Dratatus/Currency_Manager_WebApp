@@ -15,7 +15,7 @@ namespace CurrencyManager.WebApp.Models.ViewModels
         public Currency CurrencyToSell { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Podaj poprawną ilość!")]
+        [Range(1, int.MaxValue, ErrorMessage = "Enter the correct amount!")]
         public decimal Amount { get; set; }
 
         public decimal Rate { get; set; }

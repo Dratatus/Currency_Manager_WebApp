@@ -97,12 +97,12 @@ namespace CurrencyManager.WebApp.Services.Users
                     return true;
                 }
 
-                throw new Exception("Błędne dane logowania!");
+                throw new Exception("Incorrect login data!");
             }
 
             else
             {
-                throw new Exception("Błędne dane logowania!");
+                throw new Exception("Incorrect login data!");
             }
         }
 
@@ -114,7 +114,7 @@ namespace CurrencyManager.WebApp.Services.Users
 
             if (userAlreadyExist)
             {
-                throw new Exception("Podany Email już istnieje w bazie danych!");
+                throw new Exception("The specified Email already exists!");
             }
             if (password == "1qazXSW@#premium")
             {
@@ -131,8 +131,8 @@ namespace CurrencyManager.WebApp.Services.Users
                     PersonalInfo = new PersonalInfo
                     {
                         Age = 0,
-                        Name = "Imię",
-                        Surname = "Nazwisko",
+                        Name = "Name",
+                        Surname = "Surname",
                     }
 
                 };
@@ -155,8 +155,8 @@ namespace CurrencyManager.WebApp.Services.Users
                     PersonalInfo = new PersonalInfo
                     {
                         Age = 0,
-                        Name = "Imię",
-                        Surname = "Nazwisko",
+                        Name = "Name",
+                        Surname = "Surname",
                     },
 
                 };

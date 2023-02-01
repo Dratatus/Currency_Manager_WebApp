@@ -35,7 +35,7 @@ namespace CurrencyManager.WebApp.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Błędne dane logowania";
+                    ViewBag.ErrorMessage = "Incorrect login data";
 
                     return View();
                 }

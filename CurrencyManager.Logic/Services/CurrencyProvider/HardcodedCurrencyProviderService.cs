@@ -17,10 +17,6 @@ namespace CurrencyManager.Logic.Services.CurrencyProvider
 
         public async Task<List<Currency>> GetCurrenciesAsync()
         {
-            // Metoda ToList tworzy nową instancję listy. W ten sposób zwracasz INNĄ listę z tymi samymi danymi
-            // Jak ktoś pobierze sobie listę walut i doda do niej nową walutę to ona nie uwzględni się w tej liście,
-            // dlatego, że ToList stworzyło nową referencję
-
             var currencies = _currencies.ToList();
 
             return await Task.FromResult(currencies);

@@ -14,8 +14,6 @@ namespace CurrencyManager.WebApp.Controllers
             _currencyProviderService = currencyProviderService;
         }
 
-        // Metoda return View zwraca plik cshtml
-        // Wybiera go na podstawie konwencji nazewnictwa, więcej info w komentarzu w klasie Program przy metodzie AddControllersWithViews
         public async Task<IActionResult> Index()
         {
             var currencies = await _currencyProviderService.GetCurrenciesAsync(); 
