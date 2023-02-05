@@ -1,115 +1,116 @@
 
 # Currency Manager
 
-Projekt strony internetowej z dostępem do walut pobieranych z API.
-Użytkownik musi się zalogować/zarejestrować by móc korzystać ze strony.
-Strona posiada stronę główną gdzie wyświetlane są dostępne waluty, profil użytkownika oraz konwerter walut gdzie można wybrać walutę sprzedawaną, kupowaną oraz ilość pieniędzy konwertowanych by sprawdzić kurs walut oraz ilość pieniędzy w kupionej walucie.
+A project of website with access to currencies retrieved from an API. Users must log in/register to use the website.
+The website has a home page where available currencies are displayed. From the homepage, users can go to their profile page or the currency converter, where they can select the currency to sell/buy and the amount of money to exchange to check the currency rate and the amount of money in the purchased currency.
 
 
-## Instalacja
+## installation
 
-- Wypakuj pliki projektu do wybranego katalogu.
-- Otwórz terminal w katalogu CurrencyManager.WebApp.
-- Zainstaluj narzędzie dotnet df za pomocą polecenia: 
+- Extract the project files into a chosen directory.
+- Open the terminal in the CurrencyManager.WebApp directory.
+- Install the dotnet ef tool using the command: 
 ``dotnet tool install --global dotnet-ef``
-- Uruchom aplikację używając: ``dotnet run``
+- Run the application using: ``dotnet run``
 
-## Baza danych
+## Database
 
-Projekt został zaprojektowany tak by baza danych automatycznie utworzyła się w momencie uruchomienia projektu. W przypadku błędów związanych z utworzeniem bazy danych należy w  łańcuchu połączenia ustawić parametr ``Source`` na adres swojego lokalnego serwera. Łańcuch połącznia znajduje się w lokalizacji: ``Projekt_asp\CurrencyManager.Data\Configuration``  w pliku ``CurrencyManagerDbContext.cs``
-## Perspektywa użytkownika
+The project was designed so that the database would automatically be created when the project is started. In case of errors related to creating the database, the ``Source`` parameter must be set to the address of your local server in the connection string. The connection string is located at ``Projekt_asp\CurrencyManager.Data\Configuration`` in the file ``CurrencyManagerDbContext.cs``.
 
-### Rejestracja
+## User Perspective
 
-Dowolny użytkownik ma dostęp do strony ``https://localhost:7104/Login/Register`` na której w formularzu zostawia dane logowania: adres email i hasło. Użytkownik o haśle: ``1qazXSW@#premium`` będzie posiadał status ``Użytkownika Premium``.
+### Register
+
+Any user has access to the page ``https://localhost:7104/Login/Register`` where they can enter their registration details in a form, such as email address and a password. A user with the password ``1qazXSW@#premium`` will have the status of ``Premium User``.
 
 ![rejestracja](https://user-images.githubusercontent.com/92109490/215595928-751456fd-195f-4500-998d-3426229edfd9.png)
 
-Po wysłaniu formularza w przypadku ustawienia poprawnych danych użytkownik jest przenoszony do strony głównej z wyświetlanymi dosępnymi walutami ``https://localhost:7104/Currency/Index``.
+After submitting the form, if the data entered is correct, the user is redirected to the main page displaying available currencies at ``https://localhost:7104/Currency/Index``.
 
 
 ![homePage](https://user-images.githubusercontent.com/92109490/215595920-99003c67-3560-4861-a1c5-c3b3dd748ac1.png)
 
 
-### Logowanie
+### Login
 
-Do strony z logowaniem: ``https://localhost:7104/login`` ma dostęp dowolny użytkownik. Należy podać adres email i hasło.
+Access to the login page: ``https://localhost:7104/login`` is available to any user where they must enter their email address and password
 
 ![Zrzut ekranu 2023-01-30 220631](https://user-images.githubusercontent.com/92109490/215595930-6ed66c2e-c069-430b-be2c-f2ae8b84bf03.png)
 
-Po przesłaniu formularza w przypadku podania poprawnych danych logowania użytkownik jest przenoszony pod adres: ``https://localhost:7104/Currency/Index`` do strony głównej z wyświetlanymi dosępnymi walutami.
+After submitting the form with the correct login details, the user is redirected to the main page at ``https://localhost:7104/Currency/Index`` displaying the available currencies.
 
 
-### Konwerter Walut
+### Converter
 
-Po udanym logowaniu/rejestracji użytkownik posiada dostęp do zakładki ``Konwerter Walut`` po której kliknięciu zostaje przenoszony pod adres: ``https://localhost:7104/Converter/Converter``
+After successful login / registration, the user has access to the ``Currency Converter`` tab, which, when clicked, is redirected to the address: ``https://localhost:7104/Converter/Converter``
 
 
 ![konwerter](https://user-images.githubusercontent.com/92109490/215595924-3bce8bf0-0dfa-4df7-8b29-cd52db235512.png)
 
 
-W konwerterze należy wybrać walutę sprzedawaną, kupowaną oraz ilość wymienianych pieniędzy.
-Po wybraniu opisanych opcji należy zatwierdzić wybór przyciskiem ``Konwertuj``, odczekać aż strona zwróći kurs, a następnie wyświetlić wynik konwersji walut za pomocą przycisku ``Wyświetl``
+In the converter, you must select the currency being sold, purchased, and the amount of money to be exchanged.
+Once the options have been selected, confirm your selection with the "Convert" button, wait for the page to return the rate, and then display the result of the currency conversion with the "Display" button.
 
 
 
-### Profil
+### Profile
 
-Po udanym logowaniu/rejestracji użytkownik posiada dostęp do zakładki ``Profil`` po której kliknięciu zostaje przenoszony pod adres: ``https://localhost:7104/Profile/Profile``
+After successful login / registration, the user has access to the tab "Profile" which, when clicked, will be redirected to the address: "https://localhost:7104/Profile/Profile"
 
 ![profile](https://user-images.githubusercontent.com/92109490/215595926-8a4a04bb-f0ce-469b-bfa8-45d2e435cc39.png)
 
-Na stronie profilu użytkownik może zaktualizować/zmienić swoje dane personalne takie jak:
-- Imię 
-- Naziwsko
-- Wiek
+On the profile page, the user can update/change their personal data such as:
+- First Name
+- Last Name
+- Age
 - Email
-- Hasło
-- Typ użytkownika
+- Password
+- User Type
 
-``Użytkownik premium`` oprócz możliwości zmian swoich danych personalnych, posiada również historię swojej ostanio dokonanej konwersji walut.
-By zmienić Typ użytkownika ze standardowego na użytkownika premium należy zmienić hasło na: `1qazXSW@#premium`
+``User premium`` in addition to the ability to change their personal data, also has a history of their last currency conversion.
+To change the user type from standard to premium, change the password to: `1qazXSW@#premium`
 
 
 ![exchangeRateHistory](https://user-images.githubusercontent.com/92109490/215595932-db29798f-03a4-4492-ad13-79c6f20dd249.png)
 
 
 
-## Testowi użytkownicy
+## Test users
 
-Użytkownicy premium: 
+User premium: 
 - Email: premium@user.pl
 - Hasło: 1qazXSW@#premium
 
-Użytkownicy standardowi:
+User standard:
 - Email: standard@user.pl
 - Hasło: 1qazXSW@#
-## Repozytoria
+## Repositories
 
-Projekt zawiera dwie implementacje Interfejsu ICurrencyProviderService dostarczającego waluty:
+This project contains two implementations of the ICurrencyProviderService interface providing currencies:
 
-- ``ApiCurrencyProviderService`` - repozytorium produkcyjne - waluty pobierane z API
-- ``HardcodedCurrencyProviderService`` - repozytorium testowe
-
-
-oraz dwie implementacje Interfejsu IExchangeRateProviderService dostarczającego kursy wybranych walut: 
-
-- ``ApiExchangeRatesProviderService`` - repozytorium produkcyjne - kursy pobierane z API
-- ``HardcodedExchangeRatesProviderService`` - repozytorium testowe
+- ``ApiCurrencyProviderService`` - production repository - currencies retrieved from API
+- ``HardcodedCurrencyProviderService`` - test repository
 
 
-Projekt domyślnie używa repozytoriów produkcyjnych. W przypadku błędów związanych z Api typu: ``Bad request`` należy zamknąć i ponownie uruchomić projekt. By zmienić repozytoria produkcyjne na repozytoria testowe należy w pliku Program.cs zmienić ``ApiCurrencyProviderService`` na ``HardcodedCurrencyProviderService`` oraz ``ApiExchangeRatesProviderService`` na ``HardcodedExchangeRatesProviderService`` 
+and two implementations of the IExchangeRateProviderService interface providing rates of selected currencies:
+
+- ``ApiExchangeRatesProviderService`` - production repository - rates downloaded from an API
+- ``HardcodedExchangeRatesProviderService`` - test repository
+
+
+By default, the project uses production repositories. In case of errors related to Api, such as: ``Bad request``, it is necessary to close and restart the project. To change the production repositories to the test repositories, it is necessary to change the ``ApiCurrencyProviderService`` to ``HardcodedCurrencyProviderService`` and the ``ApiExchangeRatesProviderService`` to ``HardcodedExchangeRatesProviderService`` in the Program.cs file.
 
 ![bindowanie](https://user-images.githubusercontent.com/92109490/215597318-8487a9bf-ab93-4213-a94a-d52bb9952d24.png)
 
 
 
 
-## wymagania
+## requirements
 
 - [ASP.NET Core 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 - [SQL Server](https://www.microsoft.com/pl-pl/sql-server/sql-server-downloads)
-## Technologie
+
+## technologies
 
 - C# 10.0
 - NET.6.0
