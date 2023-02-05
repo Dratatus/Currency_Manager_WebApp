@@ -105,12 +105,12 @@ By default, the project uses production repositories. In case of errors related 
 
 
 
-## requirements
+## Requirements
 
 - [ASP.NET Core 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 - [SQL Server](https://www.microsoft.com/pl-pl/sql-server/sql-server-downloads)
 
-## technologies
+## Technologies
 
 - C# 10.0
 - NET.6.0
