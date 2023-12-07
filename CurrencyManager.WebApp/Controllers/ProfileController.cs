@@ -1,6 +1,6 @@
 ﻿using CurrencyManager.Data.Entities;
 using CurrencyManager.Data.Repositories;
-using CurrencyManager.WebApp.Models.Services.Profile;
+using CurrencyManager.WebApp.Services.Profile;
 using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;

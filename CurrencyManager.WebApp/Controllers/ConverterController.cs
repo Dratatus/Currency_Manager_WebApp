@@ -12,7 +12,7 @@ using System.Diagnostics;
 using CurrencyManager.WebApp.Services.Users;
 using CurrencyManager.Data.Entities;
 using CurrencyManager.Data.Repositories;
-using CurrencyManager.WebApp.Models.Services.Converter;
+using CurrencyManager.WebApp.Services.Converter;
 
 namespace CurrencyManager.WebApp.Controllers
 {

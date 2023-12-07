@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CurrencyManager.WebApp.Models.Services.Converter
+namespace CurrencyManager.WebApp.Services.Converter
 {
-    public class ConverterService: IConverterService
+    public class ConverterService : IConverterService
     {
         private readonly ICurrencyProviderService _currencyProviderService;
 
@@ -18,7 +18,7 @@ namespace CurrencyManager.WebApp.Models.Services.Converter
 
         public bool IsValueCorrect(decimal value)
         {
-            if (value <= 0) 
+            if (value <= 0)
             {
                 throw new Exception("Podaj poprawną ilość!");
             }
@@ -29,7 +29,7 @@ namespace CurrencyManager.WebApp.Models.Services.Converter
             }
         }
 
-        public async Task<CurrencyViewModel>GetCurrenciesModelToDisplay()
+        public async Task<CurrencyViewModel> GetCurrenciesModelToDisplay()
         {
             var currencies = await _currencyProviderService.GetCurrenciesAsync();
 
@@ -43,6 +43,6 @@ namespace CurrencyManager.WebApp.Models.Services.Converter
             }
 
             return currencyDisplayModel;
-        } 
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CurrencyManager.WebApp.Models.ViewModels;
 using System.Threading.Tasks;
 
-namespace CurrencyManager.WebApp.Models.Services.Converter
+namespace CurrencyManager.WebApp.Services.Converter
 {
     public interface IConverterService
     {

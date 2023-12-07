@@ -1,4 +1,4 @@
-﻿namespace CurrencyManager.WebApp.Models.Services.Profile
+﻿namespace CurrencyManager.WebApp.Services.Profile
 {
     public interface IProfileService
     {
