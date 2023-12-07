@@ -20,7 +20,7 @@ namespace CurrencyManager.WebApp.Services.Converter
         {
             if (value <= 0)
             {
-                throw new Exception("Podaj poprawną ilość!");
+                throw new Exception("Enter the correct amount!");
             }
 
             else

@@ -41,7 +41,5 @@ namespace CurrencyManager.Tests.Services.ExchangeRateService
             Assert.Equal(expectedExchangeRate.Rate, checkingExchangeRate);
 
         }
-        // 2 test do tej samej metody - upewnienie że rzuca błąd kiedy nie znajdzie waluty o którą prosisz
-
     }
 }

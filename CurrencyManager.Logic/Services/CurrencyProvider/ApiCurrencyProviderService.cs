@@ -52,7 +52,7 @@ namespace CurrencyManager.Logic.Services.CurrencyProvider
             // symbols
             var responseData = responseRootChildren.Skip(1).Single();
 
-            // symbols->dzieci
+            // symbols->children
             var responseDataRows = responseData.Children().Values();
 
             List<Currency> currencies = new List<Currency>();

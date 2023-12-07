@@ -34,7 +34,7 @@ namespace CurrencyManager.WebApp.Controllers
 
             else
             {
-                throw new Exception("Musisz się najpierw zalogować!");
+                throw new Exception("You need to login first!");
             }
         }
 

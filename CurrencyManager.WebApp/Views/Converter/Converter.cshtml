@@ -38,34 +38,34 @@
               <form asp-controller="Converter" asp-action="Converter" method="post" class="form-check">
 
                 <div class="form-outline mb-4">
-                  <label class="form-label">Waluta sprzedawana</label>
+                  <label class="form-label">Currency to sell</label>
                   <select class = "form-select" asp-items="Model.CurrencySelectedList" asp-for="CurrencyToSell.Code"> </select>
                   
                 </div>
                 <div class="form-outline mb-4">
-                  <label class="form-label">Waluta nabywana</label>
+                  <label class="form-label">Currency to Purchase</label>
                   <select class = "form-select" asp-items="Model.CurrencySelectedList" asp-for="CurrencyToPurchase.Code"> </select>
                 </div>
                
                 <div class="form-outline mb-4">
-                  <label class="form-label">Ilość pieniędzy do konwersji</label>
+                  <label class="form-label">Amount of money</label>
                   <input type="number" id="Amount" class="form-control"asp-for="Amount"/>
                   <span asp-validation-for="Amount" class = "text-danger"></span>
 
                 </div>
                     @{
-                        string rateMessage = $"Kurs waluty {ViewBag.Message2}/{ViewBag.Message}: {Model.Rate}";
-                        string amounMessage = $"Liczbba przekonwertowanych pieniędzy: {Model.Amount} {ViewBag.Message2}";
-                        string totalMoneyMessage = $"Liczbba pieniędzy po konwersji: {Model.TotalAmount} {ViewBag.Message}";
+                        string rateMessage = $"Currency rate: {ViewBag.Message2}/{ViewBag.Message}: {Model.Rate}";
+                        string amounMessage = $"Amount of converted money: {Model.Amount} {ViewBag.Message2}";
+                        string totalMoneyMessage = $"Amount of money after exchange: {Model.TotalAmount} {ViewBag.Message}";
                    }
 
              <!-- Button trigger modal -->
              <div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Wyświetl
+                  Display
                 </button>
                 <button type="submit" class="btn btn-primary" data-bs-toggle="" data-bs-target="#exampleModal">
-                  Konwertuj
+                  Convert
                 </button>
                 </div>
                 <!-- Modal -->
