@@ -106,7 +106,8 @@ and two implementations of the IExchangeRateProviderService interface providing 
 
 By default, the project uses production repositories. In case of errors related to Api, such as: ``Bad request``, it is necessary to close and restart the project. To change the production repositories to the test repositories, it is necessary to change the ``ApiCurrencyProviderService`` to ``HardcodedCurrencyProviderService`` and the ``ApiExchangeRatesProviderService`` to ``HardcodedExchangeRatesProviderService`` in the Program.cs file.
 
-![bindowanie](https://user-images.githubusercontent.com/92109490/215597318-8487a9bf-ab93-4213-a94a-d52bb9952d24.png)
+![image](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/67b9fe7e-c628-49bd-9b0f-670e147f3fc1)
+
 
 
 
