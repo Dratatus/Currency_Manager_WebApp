@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="~/css/MyDiv.css" />
 </head>
 <body>
     <header>
@@ -13,16 +15,16 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link"   <a asp-controller ="Currency" asp-action="Index"><p>Home</p></a></a>
+                        <a class="nav-link" asp-controller="Currency" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  <a asp-controller ="Converter" asp-action="Converter"><p>Converter</p></a>
+                        <a class="nav-link" asp-controller="Converter" asp-action="Converter">Converter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  <a asp-controller ="Profile" asp-action="Profile"><p>Profile</p></a></a>
+                        <a class="nav-link" asp-controller="Profile" asp-action="Profile">Profile</a>
                     </li>
-                     <li class="nav-Logout">
-                        <a class="nav-link"  <a asp-controller ="Logout" asp-action="Logout"><p>Logout</p></a></a>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Logout" asp-action="Logout">Logout</a>
                     </li>
                 </ul>
             </div>

@@ -12,7 +12,7 @@ namespace CurrencyManager.Logic.Services.ExchangeRatesProvider
         private readonly ICurrencyProviderService _currencyProviderService;
 
         private readonly string _apiUrl = "https://api.fastforex.io";
-        private readonly string _developmentKey = "598a873767-79203db811-rp1k16";
+        private readonly string _developmentKey = "7ac8000082-c7eee67d2f-s8m01i";
 
         public ApiExchangeRatesProviderService(ICurrencyProviderService currencyProviderService)
         {

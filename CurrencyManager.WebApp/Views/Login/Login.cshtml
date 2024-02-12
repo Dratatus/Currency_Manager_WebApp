@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-<!--Zapis wiążący klasę modelu z widokiem cshtml, to umożliwia przesyłania danych między widokiem a kontrolerem-->
 @model Passes
 
 <!DOCTYPE html>
@@ -14,56 +13,58 @@
     <link rel="stylesheet" href="~/css/Register.css" />
 </head>
 <body>
-   <section class="vh-100 bg-image"
-  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Login</h2>
+    <section class="vh-100 bg-image"
+             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-              <form method="post" class="form-check">
+                                <form method="post" class="form-check">
 
-                <div class="form-outline mb-4">
-                  <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="EmailAddress" />
-                  <label class="form-label">Email</label>
-                </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="emailAddress" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="EmailAddress" />
+                                        <label class="form-label">Email</label>
+                                    </div>
 
-                <div class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Password"/>
-                  <label class="form-label">Password</label>
-                </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Password" />
+                                        <label class="form-label">Password</label>
+                                    </div>
 
-                <div class="d-flex justify-content-center">
-                  <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
-                </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Login
+                                        </button>
+                                    </div>
 
-                 <p>
-                     @if (TempData["errorMessage"] != null)
-                    {
-                            <div class="alert alert-danger">
-                               <p style= "text-align: center;"> @TempData["errorMessage"]</p>
+                                    <p>
+                                        @if (TempData["errorMessage"] != null)
+                                        {
+                                            <div class="alert alert-danger">
+                                                <p style="text-align: center;"> @TempData["errorMessage"]</p>
+                                            </div>
+                                        }
+                                    </p>
+                                </form>
+
+                                <p class="text-center text-muted mt-5 mb-0">Don'thave an account? <a asp-action="Register" class="fw-bold text-body"><u>Register here</u></a></p>
+
+                                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                                <script src="~/js/site.js" asp-append-version="true"></script>
                             </div>
-                    }
-                </p>
-              </form>
-
-              <p class="text-center text-muted mt-5 mb-0">Don'thave an account? <a asp-action="Register" class="fw-bold text-body"><u>Register here</u></a></p>
-
-                  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>

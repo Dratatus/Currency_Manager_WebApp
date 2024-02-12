@@ -1,18 +1,14 @@
-﻿using CurrencyManager.Logic.Models;
+﻿using CurrencyManager.Data.Entities;
+using CurrencyManager.Data.Repositories;
 using CurrencyManager.Logic.Services.CurrencyProvider;
-using CurrencyManager.WebApp.Models;
+using CurrencyManager.Logic.Services.ExchangeRates;
 using CurrencyManager.WebApp.Models.ViewModels;
+using CurrencyManager.WebApp.Services.Converter;
+using CurrencyManager.WebApp.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using CurrencyManager.Logic.Services.ExchangeRates;
-using System.Diagnostics;
-using CurrencyManager.WebApp.Services.Users;
-using CurrencyManager.Data.Entities;
-using CurrencyManager.Data.Repositories;
-using CurrencyManager.WebApp.Services.Converter;
+using System.Threading.Tasks;
 
 namespace CurrencyManager.WebApp.Controllers
 {
@@ -76,7 +72,7 @@ namespace CurrencyManager.WebApp.Controllers
 
                 }
                 };
-                 
+
                 ViewBag.Message = currenciesToDisplay.CurrencyToPurchase.Code;
                 ViewBag.Message2 = currenciesToDisplay.CurrencyToSell.Code;
 

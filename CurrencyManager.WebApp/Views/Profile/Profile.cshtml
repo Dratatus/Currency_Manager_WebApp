@@ -6,47 +6,49 @@
 @model User
 <head>
 
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-       <link rel="stylesheet" href="~/css/Profile.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/Profile.css" />
 </head>
 <body>
     <form method="post" class="form-check">
-    <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                <span class="font-weight-bold"> @Model.PersonalInfo.Name </span>
-                <span class="font-weight-bold"> @Model.PersonalInfo.Surname</span>
-                <span class="font-weight-bold"> @Model.PersonalInfo.Age lat </span>
-                <span class="font-weight-bold"> User type: @if (@Model.IsPremium)
-                                                {
-                                                    <p>User Premium</p>
-                                                }
-                                                else
-                                                {
-                                                    <p>User standard</p>
-                                                }
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150rem" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        <span class="font-weight-bold"> @Model.PersonalInfo.Name </span>
+                        <span class="font-weight-bold"> @Model.PersonalInfo.Surname</span>
+                        <span class="font-weight-bold"> @Model.PersonalInfo.Age years old </span>
+                        <span class="font-weight-bold">
+                            User type: @if (@Model.IsPremium)
+                            {
+                                <p>User Premium</p>
+                            }
+                            else
+                            {
+                                <p>User standard</p>
+                            }
                         </span>
-                <span class="font-weight-bold"> User ID: @Model.Id </span>
-                
-            </div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile settings</h4>
+                        <span class="font-weight-bold"> User ID: @Model.Id </span>
+
+                    </div>
                 </div>
-               <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Name" placeholder="Imię" value="@Model.PersonalInfo.Name"> <span asp-validation-for="PersonalInfo.Name"></span></div>
-                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Surname" placeholder="Nazwisko" value="@Model.PersonalInfo.Surname"> <span asp-validation-for="@Model.PersonalInfo.Surname"></span></div>
-                    <div class="col-md-6"><label class="labels">Age</label><input type="int" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Age" placeholder="Wiek" value="@Model.PersonalInfo.Age"> <span asp-validation-for="@Model.PersonalInfo.Age"></span></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Password</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.Password)" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.Password"></span></div>
-                    <div class="col-md-6"><label class="labels">Email</label><input type="email" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.EmailAddress" placeholder="Email" value="@Model.Passes.EmailAddress"> <span asp-validation-for="Passes.EmailAddress"></span></div>
-                    <div class="col-md-6"><label class="labels">Confirm password</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.ConfirmPassword)" placeholder="Hasło" value="@Model.Passes.Password"> <span asp-validation-for="Passes.ConfirmPassword"></span></div>
-                </div>
-                <div class="row mt-3">
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile settings</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Name" placeholder="Name" value="@Model.PersonalInfo.Name"> <span asp-validation-for="PersonalInfo.Name"></span></div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Surname" placeholder="Surrname" value="@Model.PersonalInfo.Surname"> <span asp-validation-for="@Model.PersonalInfo.Surname"></span></div>
+                            <div class="col-md-6"><label class="labels">Age</label><input type="int" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@Model.PersonalInfo.Age" placeholder="Age" value="@Model.PersonalInfo.Age"> <span asp-validation-for="@Model.PersonalInfo.Age"></span></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Password</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.Password)" placeholder="Password" value="@Model.Passes.Password"> <span asp-validation-for="Passes.Password"></span></div>
+                            <div class="col-md-6"><label class="labels">Email</label><input type="email" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="Passes.EmailAddress" placeholder="Mail" value="@Model.Passes.EmailAddress"> <span asp-validation-for="Passes.EmailAddress"></span></div>
+                            <div class="col-md-6"><label class="labels">Confirm password</label><input type="password" class="form-control @(ViewBag.ErrorMessage == null ? string.Empty : "is-invalid")" asp-for="@(Model.Passes.ConfirmPassword)" placeholder="Password" value="@Model.Passes.Password"> <span asp-validation-for="Passes.ConfirmPassword"></span></div>
+                        </div>
+                        <div class="row mt-3">
                             @if (@Model.IsPremium)
                             {
                                 foreach (var exHistory in @Model.ExchangeRateHistory)
@@ -58,20 +60,20 @@
                                 }
                             }
 
-                </div>
+                        </div>
 
-                <div class="row mt-3">
+                        <div class="row mt-3">
+                        </div>
+                        <div class="row mt-3">
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                    </div>
                 </div>
-                <div class="row mt-3">
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
         </div>
-            </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
-</form>
+        </div>
+        </div>
+        </div>
+    </form>
 </body>

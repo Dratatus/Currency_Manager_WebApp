@@ -4,46 +4,45 @@
 }
 @model List<Currency>
 <head>
-     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CurrencyManager.WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/MyDiv.css"/>
+    <link rel="stylesheet" href="~/css/MyDiv.css" />
 
 </head>
 
-    <body>
- <div
-  class="bg-image"
-  style="
+<body>
+    <div class="bg-image"
+         style="
     background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp');
     height: 100vh;">
-  <div class="my-custom-space">
-        <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table table-striped table-bordered table-dark border-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int rowNumber = 0;
-                        foreach (var currency in Model)
-                        {
-                            <tr>
-                                <th scope="row">@rowNumber</th>
-                                <td>@currency.Name</td>
-                                <td>@currency.Code</td>
-                            </tr>
-                            rowNumber++;
+        <div class="my-custom-space">
+            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-striped table-bordered table-dark border-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int rowNumber = 0;
+                            foreach (var currency in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@rowNumber</th>
+                                    <td>@currency.Name</td>
+                                    <td>@currency.Code</td>
+                                </tr>
+                                rowNumber++;
+                            }
                         }
-                    }
-            </table>
+                </table>
 
+            </div>
         </div>
-        </div>
-        </div>
+    </div>
 </body>

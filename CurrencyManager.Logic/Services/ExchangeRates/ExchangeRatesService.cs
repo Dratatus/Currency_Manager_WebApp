@@ -50,7 +50,6 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public decimal GetAmonuntOfExchangingMoney(string currencyToPurchase, string currencyToSell, decimal amountOfmoney)
         {
-   
             decimal exchangeRate =  GetExchangeRate(currencyToPurchase, currencyToSell);
 
             decimal amonuntOfExchangingMoney = exchangeRate * amountOfmoney;
@@ -60,7 +59,6 @@ namespace CurrencyManager.Logic.Services.ExchangeRates
 
         public bool CurrencyExists(string currencyCode)
         {
-          
             string currencyCodeUpper = currencyCode.ToUpper();
 
             bool currencyExists = _exchangeRates.Any(er => er.CurrencyToPurchase.Code == currencyCodeUpper);

@@ -1,16 +1,46 @@
 .my-custom-scrollbar {
-   
-    position: relative;
-    height: 620px;
-    overflow: auto;
+    height: 70%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
 }
 
 .table-wrapper-scroll-y {
-    display: block;
+    display: inline-block;
 
 }
 .my-custom-space {
-    padding-top: 100px;
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-top: 6rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.display_button {
+    margin-left: 10rem;
+    text-align: center;
+    display: inline;
+    align-items: center;
+    justify-content: center;
+}
+
+.convert_button {
+    display: inline;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_buttons {
+    width: 10%;
+}
+
+.navbar-brand{
+   padding-right: 1rem;
+
+}
+
+#navbarText {
+    text-align: center;
+    justify-content: left;
+    margin-right: 2rem;
+    margin-bottom: 0.7rem;
 }
