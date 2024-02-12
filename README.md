@@ -36,7 +36,9 @@ After submitting the form, if the data entered is correct, the user is redirecte
 
 Access to the login page: ``https://localhost:7104/login`` is available to any user where they must enter their email address and password
 
-![Zrzut ekranu 2023-01-30 220631](https://user-images.githubusercontent.com/92109490/215595930-6ed66c2e-c069-430b-be2c-f2ae8b84bf03.png)
+![login](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/f6a392bd-2af0-4b3c-bfcc-9b29c199ec55)
+
+
 
 After submitting the form with the correct login details, the user is redirected to the main page at ``https://localhost:7104/Currency/Index`` displaying the available currencies.
 
