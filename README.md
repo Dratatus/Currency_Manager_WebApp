@@ -23,12 +23,13 @@ The project was designed so that the database would automatically be created whe
 
 Any user has access to the page ``https://localhost:7104/Login/Register`` where they can enter their registration details in a form, such as email address and a password. A user with the password ``1qazXSW@#premium`` will have the status of ``Premium User``.
 
-![rejestracja](https://user-images.githubusercontent.com/92109490/215595928-751456fd-195f-4500-998d-3426229edfd9.png)
+![register](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/72d8d578-f420-4197-b949-996e78b38c5e)
+
 
 After submitting the form, if the data entered is correct, the user is redirected to the main page displaying available currencies at ``https://localhost:7104/Currency/Index``.
 
 
-![homePage](https://user-images.githubusercontent.com/92109490/215595920-99003c67-3560-4861-a1c5-c3b3dd748ac1.png)
+![home](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/ad7ea986-5c56-49bf-8b85-a4788f6ead2c)
 
 
 ### Login
@@ -45,7 +46,8 @@ After submitting the form with the correct login details, the user is redirected
 After successful login / registration, the user has access to the ``Currency Converter`` tab, which, when clicked, is redirected to the address: ``https://localhost:7104/Converter/Converter``
 
 
-![konwerter](https://user-images.githubusercontent.com/92109490/215595924-3bce8bf0-0dfa-4df7-8b29-cd52db235512.png)
+![Converter](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/126e3a95-fb7b-453f-a022-17d3265399e7)
+
 
 
 In the converter, you must select the currency being sold, purchased, and the amount of money to be exchanged.
@@ -57,7 +59,8 @@ Once the options have been selected, confirm your selection with the "Convert" b
 
 After successful login / registration, the user has access to the tab "Profile" which, when clicked, will be redirected to the address: "https://localhost:7104/Profile/Profile"
 
-![profile](https://user-images.githubusercontent.com/92109490/215595926-8a4a04bb-f0ce-469b-bfa8-45d2e435cc39.png)
+![Profile](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/f0368ee1-ba0d-468b-aa22-51664f424a72)
+
 
 On the profile page, the user can update/change their personal data such as:
 - First Name
@@ -71,7 +74,8 @@ On the profile page, the user can update/change their personal data such as:
 To change the user type from standard to premium, change the password to: `1qazXSW@#premium`
 
 
-![exchangeRateHistory](https://user-images.githubusercontent.com/92109490/215595932-db29798f-03a4-4492-ad13-79c6f20dd249.png)
+![premiumFunc](https://github.com/BugLurker404/Currency_Manager_WebApp/assets/92109490/4462eaed-aec1-4b05-8671-797a47685058)
+
 
 
 
