@@ -130,4 +130,4 @@ By default, the project uses production repositories. In case of errors related 
 - Microsoft.VisualStudio.Web.CodeGeneration.Design
 ## Autor
 
-- [@DanP412](https://github.com/DanP412)
+- [Daniel Partatus](https://github.com/Dratatus)
